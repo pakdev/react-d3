@@ -11,15 +11,15 @@ module.exports = {
     loaders: [{
       test: /\.jsx?$/,
       exclude: /node_modules/,
-      loader: 'babel',
+      loader: 'babel-loader',
       query: {
         presets: ['es2015', 'react']
       }
     }, {
       test: /\.html$/,
-      loader: 'file?name=[name].[ext]'
+      loader: 'file-loader?name=[name].[ext]'
     }, {
-      test: /\.css$/, loader: 'style!css'
+      test: /\.css$/, loader: 'style-loader!css-loader'
     }]
   },
   plugins: [

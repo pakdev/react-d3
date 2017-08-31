@@ -1,14 +1,19 @@
 var path = require('path');
 
 module.exports = {
-    entry: [
-      'webpack/hot/dev-server',
-      'webpack-dev-server/client?http://localhost:8080',
-      path.resolve(__dirname, 'app/main.js')
-    ],
+    entry: { 
+      app: [
+        path.resolve(__dirname, 'app/main.js')
+      ]
+    },
+    devServer: {
+      contentBase: './build',
+      port: 8080,
+      hot: true
+    },
     output: {
-        path: path.resolve(__dirname, 'build'),
-        filename: 'bundle.js'
+      filename: 'bundle.js',
+      path: path.resolve(__dirname, 'build')
     },
     module: {
       loaders: [{
@@ -20,7 +25,7 @@ module.exports = {
         }
       }, {
         test: /\.html$/,
-        loader: 'file?name=[name].[ext]'
+        loader: 'file-loader?name=[name].[ext]'
       }, {
         test: /\.css$/, loader: 'style!css'
       }]
